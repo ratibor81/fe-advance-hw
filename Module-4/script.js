@@ -1,6 +1,5 @@
     // Модуль - 4 . Создание функций.
 
-clear();
 const alphabet = "qwertyuiop[]asdfghjkl;'zxcvbnm,./";
 
 function addKeyboardLayout(alphabet) {
@@ -16,29 +15,21 @@ const keyboard = addKeyboardLayout(alphabet);
 console.log('Получен следующий массив строк клавиатуры:',
 keyboard);
 
-let row;
-function getRandCharInRow(row){
-    if (row === 1) {
-        selectedRow = keyboard [0];
-        var randomChar = selectedRow[Math.floor(Math.random() * selectedRow.length)];
-    }
-    else if (row === 2) {
-        selectedRow = keyboard [1];
-        var randomChar = selectedRow[Math.floor(Math.random() * selectedRow.length)];
-    }
-    else if (row === 3) {
-        selectedRow = keyboard [2];
-        var randomChar = selectedRow[Math.floor(Math.random() * selectedRow.length)];
-    }
-    return randomChar;
-}   
-    for (i = 1; i <= keyboard.length; i++) {
-        console.log(`Случайный символ из ${i}-ой строки - `, getRandCharInRow(i));
-    }
+
+function getRandCharInRow(row) {
+    let i = row;
+    let j = Math.floor(Math.random() * keyboard[i].length);
+    return keyboard[i][j];
+}
+
+for (i = 0; i < keyboard.length; i++) {
+        console.log(`Случайный символ из ${i+1}-ой строки - `, getRandCharInRow(i));
+}
 
 function getRandCharInAlph() {
-    const alphabetArr = alphabet.split('');
-    var randomAlphabetChar = alphabetArr[Math.floor(Math.random() * alphabetArr.length)];
-    return randomAlphabetChar;
+    let i = Math.floor(Math.random() * keyboard.length);
+    let j = Math.floor(Math.random() * keyboard[i].length);
+    return keyboard[i][j];
 }
+
 console.log('Случайный символ всего алфавита - ', getRandCharInAlph());
