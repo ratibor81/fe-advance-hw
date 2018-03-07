@@ -14,18 +14,18 @@ console.log('Получен следующий массив строк клав�
 keyboard);
 
 
-function getRandCharInRow(i) {
-    const j = Math.floor(Math.random() * keyboard[i].length);
-    return keyboard[i][j];
+function getRandCharInRow(stringNumber) {
+    const randomIndex = Math.floor(Math.random() * keyboard[stringNumber].length);
+    return keyboard[stringNumber][randomIndex];
 }
 
 console.log(`Случайный символ из 1-ой строки - `, getRandCharInRow(1));
 
 
 function getRandCharInArr(array) {
-    const i = Math.floor(Math.random() * array.length);
-    const j = Math.floor(Math.random() * array[i].length);
-    return array[i][j];
+    const stringNumber = Math.floor(Math.random() * array.length);
+    const randomIndex = Math.floor(Math.random() * array[stringNumber].length);
+    return array[stringNumber][randomIndex];
 }
 
 console.log('Случайный символ всего алфавита - ', getRandCharInArr(keyboard));
