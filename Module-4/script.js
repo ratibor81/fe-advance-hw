@@ -23,9 +23,9 @@ console.log(`Случайный символ из 1-ой строки - `, getRa
 
 
 function getRandCharInArr(array) {
-    const stringNumber = Math.floor(Math.random() * array.length);
-    const randomIndex = Math.floor(Math.random() * array[stringNumber].length);
-    return array[stringNumber][randomIndex];
+    const randomString = Math.floor(Math.random() * array.length);
+    const randomChar = Math.floor(Math.random() * array[randomString].length);
+    return array[randomString][randomChar];
 }
 
 console.log('Случайный символ всего алфавита - ', getRandCharInArr(keyboard));
