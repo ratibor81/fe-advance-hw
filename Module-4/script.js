@@ -3,9 +3,8 @@ const alphabet = "qwertyuiop[]asdfghjkl;'zxcvbnm,./";
 function getKeyboardArr(alphabet) {
     const alphabetArr = alphabet.split('');
     const endFirstStr = alphabetArr.indexOf(']')+1;
-    const startSecondStr = alphabetArr.indexOf('a');
     const endSecondStr = alphabetArr.indexOf('\'')+1;
-    const keyboard = [alphabetArr.slice(0, endFirstStr), alphabetArr.slice(startSecondStr, endSecondStr), alphabetArr.slice(-10)];
+    const keyboard = [alphabetArr.slice(0, endFirstStr), alphabetArr.slice(endFirstStr, endSecondStr), alphabetArr.slice(endSecondStr, alphabet.length)];
     return keyboard;
 }
 const keyboard = getKeyboardArr(alphabet);
@@ -24,8 +23,9 @@ console.log(`Случайный символ из 1-ой строки - `, getRa
 
 function getRandCharInArr(array) {
     const randomString = Math.floor(Math.random() * array.length);
-    const randomChar = Math.floor(Math.random() * array[randomString].length);
-    return array[randomString][randomChar];
+    const randomChar = getRandCharInRow(randomString);
+    return randomChar;
+    
 }
 
 console.log('Случайный символ всего алфавита - ', getRandCharInArr(keyboard));
