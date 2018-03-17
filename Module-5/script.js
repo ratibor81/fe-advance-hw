@@ -39,7 +39,7 @@ writeKeyboardToObj (keyboardEn, "en");
 writeKeyboardToObj (keyboardRu, "ru");
 writeKeyboardToObj (keyboardUa, "ua");
 
-const writeLangToObj = () => {
+const writeLangToObj = (Obj) => {
 let lang = "";
     do {
         lang = prompt(' Choose the keyboard layout:  en - 0, ru - 1, ua - 2 ', "");
@@ -47,18 +47,21 @@ let lang = "";
     if ( lang === null) return;
         alert("Input correct value!");
     } while (true);
-    return keyboard.currentLang = keyboard.langs[lang];
+    return Obj.currentLang = Obj.langs[lang];
 }
 
-writeLangToObj()
+writeLangToObj(keyboard);
 
-const getRandCharInAlph = () => {
-    const array = keyboard.layouts[keyboard.currentLang];
+const getCurrentKeybArr = (Obj) => Obj.layouts[Obj.currentLang]; 
+
+const currentKeybArr = getCurrentKeybArr(keyboard);
+
+const getRandCharInAlph = (array) => {
     const randomString = Math.floor(Math.random() * array.length);
     const randomChar = Math.floor(Math.random() * array[randomString].length);
     return array[randomString][randomChar];
     
 }
 
-console.log(`Случайный символ ${keyboard.currentLang} алфавита - ${getRandCharInAlph()}`);
+console.log(`Случайный символ ${keyboard.currentLang} алфавита - ${getRandCharInAlph(currentKeybArr)}`);
 
