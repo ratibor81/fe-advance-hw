@@ -39,7 +39,7 @@ writeKeyboardToObj (keyboardEn, "en");
 writeKeyboardToObj (keyboardRu, "ru");
 writeKeyboardToObj (keyboardUa, "ua");
 
-const writeLangToObj = (Obj) => {
+const writeLangToObj = (obj) => {
 let lang = "";
     do {
         lang = prompt(' Choose the keyboard layout:  en - 0, ru - 1, ua - 2 ', "");
@@ -47,12 +47,12 @@ let lang = "";
     if ( lang === null) return;
         alert("Input correct value!");
     } while (true);
-    return Obj.currentLang = Obj.langs[lang];
+    return obj.currentLang = obj.langs[lang];
 }
 
 writeLangToObj(keyboard);
 
-const getCurrentKeybArr = (Obj) => Obj.layouts[Obj.currentLang]; 
+const getCurrentKeybArr = (obj) => obj.layouts[obj.currentLang]; 
 
 const currentKeybArr = getCurrentKeybArr(keyboard);
 
