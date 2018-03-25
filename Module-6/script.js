@@ -18,49 +18,39 @@ const keyTrainer = {
 
     task: "",
     createTask() {
-        this.task = [];                                     
-        while (this.task.length < this.charCount)  {
-            let randomIndex = Math.floor(Math.random() * this.chars.length);
-            this.task.push(this.chars[randomIndex]);
-        }
+        let taskArr = new Array(this.charCount);
+        for (let i = 0; i < this.charCount; i++) {
+            taskArr[i] = this.chars[Math.floor(Math.random() * this.chars.length)]; 
+        }  
+        return this.task = taskArr;
     },
+
     startTask() {
-        const userPrompt = prompt(`Наберите следующую строку:     ${this.task.join('')}`);
-        this.userInput = userPrompt.split('');
+        this.userInput = prompt(`Наберите следующую строку:     ${this.task.join('')}`).split('');
         let longerString; 
-
+            // Определяю, какая строка длиннее
         (this.task.length > this.userInput.length) ? longerString = this.task : longerString = this.userInput;
-        
-        function makeCounter() {
-            let currentCount = 0;
-                return function() {
-                return currentCount++;
-            };
-        }
-                 
-        let errorsCounter = makeCounter();  
-
+            // Посимвольное сравнение двух строк с счётчиком ошибок
+        let errorsCounter = 0;
         for (let i = 0; i < longerString.length; i++) {
             if (this.userInput[i] != this.task[i]) {
-                errorsCounter();
+                errorsCounter++
             }
         } 
-        this.userErrors = errorsCounter();
-    },
-    userInput: "",
-    userErrors: "",
-    userResult() {
+        this.userErrors = errorsCounter;
+            // Выведение результата в консоль на основе количества ошибок
         (this.userErrors === 0) ? console.log('Поздравляю! Ошибок нет.') : 
         console.log(`Количесво ошибок: ${this.userErrors}. Желаю успехов в следующем упражнении)`);
-        return;    
-    }
+        return;
+    },
+    userInput: "",
+    userErrors: ""
 };
 
 const run = obj => {
     obj.setCharCount();
     obj.createTask();
     obj.startTask();
-    obj.userResult();
 };
 
 run(keyTrainer);
