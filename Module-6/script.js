@@ -24,7 +24,7 @@ const keyTrainer = {
         }  
         return this.task = taskArr;
     },
-
+    
     startTask() {
         this.userInput = prompt(`Наберите следующую строку:     ${this.task.join('')}`).split('');
         let longerString; 
