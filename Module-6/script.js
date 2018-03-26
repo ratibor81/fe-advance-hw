@@ -18,11 +18,17 @@ const keyTrainer = {
 
     task: "",
     createTask() {
-        let taskArr = new Array(this.charCount);
+         let taskArr = new Array(this.charCount);
         for (let i = 0; i < this.charCount; i++) {
             taskArr[i] = this.chars[Math.floor(Math.random() * this.chars.length)]; 
         }  
         return this.task = taskArr;
+                        
+        // for (let value of taskArr) {
+        //     value = this.chars[Math.floor(Math.random() * this.chars.length)];
+        //     console.log(value);
+        // }  
+        // return this.task = taskArr; 
     },
     
     startTask() {
