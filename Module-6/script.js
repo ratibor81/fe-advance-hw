@@ -1,6 +1,9 @@
 const keyTrainer = {
     chars: ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm'],
     charCount: "",
+    task: "",
+    userInput: "",
+    userErrors: "",
     setCharCount() {
     let charQuantity ="";
         while (true) {
@@ -12,12 +15,11 @@ const keyTrainer = {
     },
     
     checkPositiveInteger(charQuantity) {
-        if ((charQuantity % 1 == 0) && charQuantity > 0) {
+        if ((Number.isInteger(charQuantity)) && charQuantity > 0) {
             return true;
         }
     },
-
-    task: "",
+    
     createTask() {
         if (this.charCount === null) return;
         let taskArr = new Array(this.charCount);
@@ -54,8 +56,7 @@ const keyTrainer = {
         console.log(`Количество ошибок: ${this.userErrors}. Желаю успехов в следующем упражнении)`);
         return;
     },
-    userInput: "",
-    userErrors: ""
+    
 };
 
 const run = obj => {
