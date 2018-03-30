@@ -9,9 +9,9 @@ const keyTrainer = {
         while (true) {
             charQuantity = prompt('Введите количество символов, которые Вы должны набрать',"");
             if (this.checkPositiveInteger(+charQuantity)) break;
-            if (charQuantity === null) break;
+            if (charQuantity === null) return;
         } 
-            return this.charCount = charQuantity;  
+            this.charCount = +charQuantity;    // Тип данных - число.
     },
     
     checkPositiveInteger(charQuantity) {
@@ -21,28 +21,23 @@ const keyTrainer = {
     },
     
     createTask() {
-        if (this.charCount === null) return;
+        if (this.charCount === "") return;
         let taskArr = new Array(this.charCount);
         for (let i = 0; i < this.charCount; i++) {
             taskArr[i] = this.chars[Math.floor(Math.random() * this.chars.length)]; 
         }  
-        return this.task = taskArr;
+        this.task = taskArr;
                         
-        // for (let value of taskArr) {
-        //     value = this.chars[Math.floor(Math.random() * this.chars.length)];
-        //     console.log(value);
-        // }  
-        // return this.task = taskArr; 
     },
     
     startTask() {
-        if (this.charCount === null) return;
+        if (this.charCount === "") return;              // Если объединить if(....===null), промпт будет вылазить при отмене
         const userPrompt = prompt(`Наберите следующую строку:     ${this.task.join('')}`);
-        if (userPrompt === null) return;
+        if (userPrompt === null ) return;
         this.userInput = userPrompt.split('');
-        let longerString; 
+        
             // Определяю, какая строка длиннее
-        (this.task.length > this.userInput.length) ? longerString = this.task : longerString = this.userInput;
+        const longerString = (this.task.length > this.userInput.length) ? this.task : this.userInput;
             // Посимвольное сравнение двух строк с счётчиком ошибок
         let errorsCounter = 0;
         for (let i = 0; i < longerString.length; i++) {
@@ -52,9 +47,10 @@ const keyTrainer = {
         } 
         this.userErrors = errorsCounter;
             // Выведение результата в консоль на основе количества ошибок
-        (this.userErrors === 0) ? console.log('Поздравляю! Ошибок нет.') : 
-        console.log(`Количество ошибок: ${this.userErrors}. Желаю успехов в следующем упражнении)`);
-        return;
+        if (this.userErrors === 0) {
+            console.log('Поздравляю! Ошибок нет.') 
+        } else console.log(`Количество ошибок: ${this.userErrors}. Желаю успехов в следующем упражнении)`);
+        
     },
     
 };
