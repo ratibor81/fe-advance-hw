@@ -43,10 +43,10 @@ const keyboardObj = {
         button.textContent = `${keyboardArr[i][j]}`;
         button.classList.add('button');
         row.appendChild(button);
-        keyboard.appendChild(row); // Если вынести из цикла - ДОМ не строится, строки же динамически апендятся в клаву.
+        
       }
+      keyboard.appendChild(row);
     }
-
     document.body.append(keyboard);
   },
 
