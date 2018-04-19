@@ -1,0 +1,21 @@
+.timer {
+    font-size: 2rem;
+}
+.exercise {
+    font-size: 2rem;
+    border: 1px solid;
+    text-align: center;
+    margin-bottom: 5px;
+}
+.result {
+    height: 2.5rem;
+    font-size: 2rem;
+    text-align: center;
+    color: red;
+    margin-bottom: 1rem;
+    border: 1px solid;
+    border-color: blueviolet;
+}
+#seconds {
+    color: red;
+}
