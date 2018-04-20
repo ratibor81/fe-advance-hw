@@ -1,6 +1,10 @@
 .timer {
     font-size: 2rem;
 }
+.bestTime {
+    font-size: 1.5rem;
+    color: peru;
+}
 .exercise {
     font-size: 2rem;
     border: 1px solid;

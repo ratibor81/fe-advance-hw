@@ -25,6 +25,7 @@ const charsArr = string.split('').reverse();
 const result = document.querySelector('.result');
 const task = document.querySelector('.exercise');
 const seconds = document.querySelector('#seconds');
+const bestTime = document.querySelector('.bestTime');
 
 task.innerHTML = `Введите строку: ${string}`;
 
@@ -32,8 +33,9 @@ let interval;
 let secondsValue = 0;
 
 const renderTimer = () => { // Ф-ция рендерит таймер на страницу
-  seconds.innerHTML = secondsValue;
+  seconds.innerHTML = secondsValue || '0';
 };
+renderTimer();
 
 const startTimer = () => {
   if (typeof interval !== 'number') {
@@ -67,7 +69,7 @@ const stringHandler = (event) => {
 };
 
 const updateView = () => {
-  seconds.innerHTML = localStorage.getItem('sec') || '0';
+  bestTime.innerHTML += localStorage.getItem('sec') || '0';
 };
 
 updateView(); // Вешает на страницу лучший резульат из хранилища при повторной загрузке
