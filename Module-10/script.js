@@ -74,5 +74,5 @@ const updateView = () => {
 
 updateView(); // Вешает на страницу лучший резульат из хранилища при повторной загрузке
 
-window.addEventListener('keydown', startTimer);
+window.addEventListener('keypress', startTimer);
 window.addEventListener('keydown', stringHandler);
