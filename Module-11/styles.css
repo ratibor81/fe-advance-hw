@@ -1,0 +1,45 @@
+button {
+    height: 20px;
+    background-color: #F1E1E1;
+    border: 1px solid;
+    border-radius: 2px;
+    font-weight: bold;
+}
+button:hover {
+    cursor: pointer;
+}
+.resultTable {
+    width: 70%;
+    text-align: center;
+    display: none;
+}
+thead {
+    background-color: aquamarine;
+        
+}
+tbody {
+    background-color: beige;
+}
+.addUser {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    border: 1px solid;
+    padding: 5px;
+}
+span {
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+input {
+    margin-bottom: 10px;
+}
+.status {
+    font-weight: bold;
+    color: red;
+    font-size: 25px;
+    margin: 10px 0 10px 0;
+}
+.findUser {
+    margin: 10px 0 10px 0;
+}

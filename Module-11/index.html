@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <title>Module-10</title>
+</head>
+<body>
+    <span>Получить список всех пользователей в БД</span>
+    <button class="allusers">Получить</button>
+    
+    <div class='findUser'>Найти пользователя 
+        <input type="text" id="idInput" placeholder="Введите ID пользователя"> 
+        <button class="idBtn">Найти</button>
+    </div>
+    <div class="addUser">
+    <span>Добавить пользователя</span> 
+        <input id="name" type="text" placeholder="Введите имя">
+        <input id="age" type="number" placeholder="Введите возраст">  
+        <button class="addBtn">Добавить</button>
+    </div>
+
+    <p>Удалить пользователя 
+        <input id="delInput" placeholder="Введите ID пользователя"> 
+        <button class="delBtn">Удалить</button>
+    </p>
+    <div class="addUser">
+    <span>Редактировать данные пользователя </span>
+        <input id="editInput" placeholder="Введите ID пользователя">
+        <input id="newName" type="text" placeholder="Введите новое имя">
+        <input id="newAge" placeholder="Введите новый возраст">
+        <button class="editBtn">Внести изменения</button>
+    </div>
+    <div class="status"></div>
+
+    <table class="resultTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+              </tr>
+            </thead>
+            <tbody id="result"></tbody>
+    </table>
+
+    <script type="text/template" id="table-row">
+        <tr scope="row">
+          <td><%- id%></td>
+          <td><%- name%></td>
+          <td><%- age%></td>
+        </tr>
+    </script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
