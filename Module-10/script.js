@@ -33,7 +33,7 @@ let interval;
 let secondsValue = 0;
 
 const renderTimer = () => { // Ф-ция рендерит таймер на страницу
-  seconds.innerHTML = secondsValue || '0';
+  seconds.innerHTML = (secondsValue / 100) || '0';
 };
 renderTimer();
 
@@ -42,13 +42,15 @@ const startTimer = () => {
     interval = setInterval(() => {
       secondsValue += 1;
       renderTimer();
-    }, 1000);
+    }, 10);
   }
 };
 
 const countKPS = () => { // Метод расчитывает кол-во клавиш в секунду и выводит конечный результат
-  const kps = (string.length / secondsValue).toFixed(3);
-  alert(`Упражнение закончено!\n Общее время: ${secondsValue} сек.\n Результат: ${kps} клав/сек`);
+  const kps = ((string.length / secondsValue) * 100).toFixed(3);
+  setTimeout(() => {
+    alert(`Упражнение закончено!\n Общее время: ${secondsValue / 100} сек.\n Результат: ${kps} клав/сек`);
+  }, 300);
 };
 
 const writeTimeToStorage = () => {
@@ -71,7 +73,7 @@ const stringHandler = (event) => {
 };
 
 const updateView = () => {
-  bestTime.innerHTML += localStorage.getItem('sec') || '0';
+  bestTime.innerHTML += localStorage.getItem('sec') / 100 || '0';
 };
 
 updateView(); // Вешает на страницу лучший резульат из хранилища при повторной загрузке
