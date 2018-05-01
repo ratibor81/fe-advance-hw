@@ -8,12 +8,12 @@ function CountdownTimer() { // Ф-ция-конструктор таймера �
 
 const timerObj = new CountdownTimer(); // Создание объекта таймера
 
-CountdownTimer.prototype = function Start() { // Добавление метода Start в прототип
-  this.startTime = new Date();
+CountdownTimer.prototype.Start = function Start() { // Добавление метода Start в прототип
+  this.startTime = Date.now();
 };
-CountdownTimer.prototype = function Stop() { // Добавление метода Stop в прототип
-  this.stopTime = new Date();
-  this.interval = (this.stopTime.getTime() - this.startTime.getTime()) / 1000; // Расчёт разницы времени и запись в поле interval
+CountdownTimer.prototype.Stop = function Stop() { // Добавление метода Stop в прототип
+  this.stopTime = Date.now();
+  this.interval = (this.stopTime - this.startTime) / 1000; // Расчёт разницы времени и запись в поле interval
 };
 
 Object.defineProperty(CountdownTimer.prototype, 'Start', { // Делаю метод Start неперечисляемым
@@ -30,7 +30,7 @@ const onClickHandlers = (e) => {
   }
   if (e.target.classList.contains('stop-btn')) {
     timerObj.Stop();
-    resultTime.innerHTML = `Операция заняла:  ${timerObj.interval} сек.`;
+    resultTime.innerHTML = `Операция завершена!\n Общее время: ${timerObj.interval} сек.`;
   }
 };
 
