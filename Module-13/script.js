@@ -29,33 +29,22 @@ const firstname = document.querySelector('#first_name');
 const lastname = document.querySelector('#last_name');
 const tel = document.querySelector('#tel');
 const submitBtn = document.querySelector('#submit-btn');
-const resultsList = document.querySelector('.results');
-const form = document.querySelector('#form');
+const validateFields = Array.from(document.querySelectorAll('.validateResult'));
+// const form = document.querySelector('#form');
 
 const showResults = (results) => { // Ф-ция для отрисовки результата валидации
-  let list = '';
   const keys = Object.keys(results);
   const values = Object.values(results);
   values.forEach((value, i) => {
     if (value === true) {
-      list += `<li class="success">SUCCESS: ${keys[i]} passed validation</li>`;
-    } else { list += `<li class="error">ERROR: ${keys[i]} failed validation</li>`; }
+      validateFields[i].innerHTML = `<li class="success">SUCCESS: ${keys[i]} passed validation</li>`;
+    } else { validateFields[i].innerHTML = `<li class="error">ERROR: ${keys[i]} failed validation</li>`; }
   });
-  resultsList.innerHTML = list;
-
-  // ЭТОТ ВАРИАНТ КОРОЧЕ, НО EsLint СКАЗАЛ: "юзай Object.{keys,values}, а потом перебирай массив" !
-  // for (const key in results) {
-  //   if (results[key] === true) {
-  //     list += `<li class="success">SUCCESS: ${key} passed validation</li>`;
-  //   } else { list += `<li class="error">ERROR: ${key} failed validation</li>`; }
-  // }
-  // resultsList.innerHTML = list;
 };
 
-const validate = (event) => {
-  event.preventDefault();
+const validate = () => {
+  // event.preventDefault();
   if (firstname.value === '' || lastname.value === '' || tel.value === '') { // Проверка на пустые значения input'ов
-    resultsList.innerHTML = '<div class="error">ERROR: You must fill all the fields !!!</div>';
     return;
   }
   const results = {
@@ -72,7 +61,7 @@ const validate = (event) => {
   if ((/\+\d{3}[\s|-]\d{2}[\s|-]\d{2}[\s|-]\d{2}[\s|-]\d{3}/).test(tel.value)) { // Проходят значения с пробелом или дефисом
     results.tel = true;
   }
-  form.reset(); // Сброс полей формы после валидации
+  // form.reset(); // Сброс полей формы
   showResults(results); // Отрисовка объекта валидации формы
 };
 

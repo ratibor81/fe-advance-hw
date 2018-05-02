@@ -14,24 +14,27 @@
         <form class="col s12 m6" action="#" id="form">
           <div class="row">
             <div class="input-field col s9">
-              <input placeholder="First name" id="first_name" type="text" class="validate">
-              <label for="first_name" id="first_label"></label>
+              <input placeholder="First name" id="first_name" type="text" class="validate" minlength="3" maxlength="12" required>
+              <label for="first_name"></label>
+              <span class="validateResult"></span>
             </div>
             <div class="input-field col s9">
-              <input placeholder="Last name" id="last_name" type="text" class="validate">
-              <label for="last_name" id="last_label"></label>
+              <input placeholder="Last name" id="last_name" type="text" class="validate" minlength="3" maxlength="12" required>
+              <label for="last_name"></label>
+              <span class="validateResult"></span>
             </div>
             <div class="input-field col s9">
-              <input placeholder="tel +xxx xx xx xx xxx" id="tel" type="text" class="validate">
-              <label for="tel" id="tel_label"></label>
+              <input placeholder="tel +xxx xx xx xx xxx" id="tel" type="tel" maxlength="17" class="validate" required>
+              <label for="tel"></label>
+              <span class="validateResult"></span>
             </div>
             <div class="col s9">
               <button class="btn waves-effect waves-light" id="submit-btn" type="submit" name="action">Submit</button>
             </div>
           </div>
         </form>
-        <ul class="results col s12">
-        </ul>
+        <!-- <ul class="results col s12">
+        </ul> -->
       </div>
     </div>
 
