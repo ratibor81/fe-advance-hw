@@ -32,7 +32,7 @@ const submitBtn = document.querySelector('#submit-btn');
 const validateFields = Array.from(document.querySelectorAll('.validateResult'));
 // const form = document.querySelector('#form');
 
-const showResults = (results) => { // Ф-ция для отрисовки результата валидации
+const showResults = (results) => {
   const keys = Object.keys(results);
   const values = Object.values(results);
   values.forEach((value, i) => {
@@ -44,7 +44,7 @@ const showResults = (results) => { // Ф-ция для отрисовки рез
 
 const validate = () => {
   // event.preventDefault();
-  if (firstname.value === '' || lastname.value === '' || tel.value === '') { // Проверка на пустые значения input'ов
+  if (firstname.value === '' || lastname.value === '' || tel.value === '') {
     return;
   }
   const results = {
@@ -52,17 +52,19 @@ const validate = () => {
     lastname: false,
     tel: false,
   };
-  if ((/^[a-zA-Z]|[а-яА-Я]+$/.test(firstname.value))) { // Только одно слово латиница или кирилица
+  if ((/^([a-zA-Z]{3,12})|([а-яА-Я]{3,12})+$/.test(firstname.value))) {
     results.firstname = true;
   }
-  if ((/^[a-zA-Z]|[а-яА-Я]+$/.test(lastname.value))) { // Аналогично полю firstname
+  if ((/^([a-zA-Z]{3,12})|([а-яА-Я]{3,12})+$/.test(lastname.value))) {
     results.lastname = true;
   }
-  if ((/\+\d{3}[\s|-]\d{2}[\s|-]\d{2}[\s|-]\d{2}[\s|-]\d{3}/).test(tel.value)) { // Проходят значения с пробелом или дефисом
+  if (/\d{10}/.test(tel.value)) {
     results.tel = true;
+    const telArr = Array.from(tel.value);
+    tel.value = `+38(${telArr.slice(0, 3).join('')}) ${telArr.slice(3, 5).join('')}-${telArr.slice(5, 7).join('')}-${telArr.slice(7, 10).join('')}`;
   }
   // form.reset(); // Сброс полей формы
-  showResults(results); // Отрисовка объекта валидации формы
+  showResults(results); // Отрисовка объекта валидации полей
 };
 
 submitBtn.addEventListener('click', validate);
