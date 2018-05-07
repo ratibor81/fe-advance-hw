@@ -21,7 +21,7 @@ class Shape {
 
 class Rectangle extends Shape {
   constructor(color, initX, initY, initWidth, initHeight) {
-    super(color, initX, initY, initWidth, initHeight);
+    super(color, initX, initY);
     this.initWidth = initWidth;
     this.initHeight = initHeight;
   }
@@ -35,13 +35,13 @@ class Rectangle extends Shape {
     return `width: ${this.initWidth}, height: ${this.initHeight}`;
   }
   draw() {
-    console.log(`Drawing a Rectangle at:\n${this.getCoords}\nWith dimetions:\n${this.getDims}\nFilled with color: ${this.getColor}`);
+    console.log(`Drawing a Rectangle at:\n${this.getCoords}\nWith dimentions:\n${this.getDims}\nFilled with color: ${this.getColor}`);
   }
 }
 
 class Circle extends Shape {
   constructor(color, initX, initY, initRadius) {
-    super(color, initX, initY, initRadius);
+    super(color, initX, initY);
     this.initRadius = initRadius;
   }
   get getRadius() {
@@ -51,7 +51,7 @@ class Circle extends Shape {
     this.initRadius = val;
   }
   draw() {
-    console.log(`Drawing a Circle at:\n${this.getCoords}\nWith dimetions:\nradius: ${this.getRadius}\nFilled with color: ${this.getColor}`);
+    console.log(`Drawing a Circle at:\n${this.getCoords}\nWith dimentions:\nradius: ${this.getRadius}\nFilled with color: ${this.getColor}`);
   }
 }
 // Экземпляры классов для проверки
